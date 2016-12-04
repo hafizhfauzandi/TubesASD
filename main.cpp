@@ -44,7 +44,30 @@ int main()
             cout<<"Jenis Supermarket : ";
             cin>>infop.jenis;
             address_parent p = alokasi(infop);
-            insertFirst(lp,p);
+            address_parent lastadr = findLast(lp);
+            address_parent walk = lp.first;
+            address_parent prev = lp.first;
+            if (lp.first != NULL){
+                if (p->info.Id < lp.first->info.Id){
+                    insertFirst(lp,p);
+                }
+                else if (lastadr->info.Id < p->info.Id){
+                    insertLast(lp,p);
+                }
+                else {
+                    while (p->info.Id > walk->info.Id){
+                        walk=walk->next;
+                    }
+                    p->next = walk;
+                    while (prev->next != walk){
+                        prev=prev->next;
+                    }
+                    prev->next = p;
+                }
+            }
+            else {
+                insertFirst(lp,p);
+            }
             getch();
         }
         else if(pilihan==2){
@@ -91,7 +114,7 @@ int main()
         else if(pilihan==4){
             cout<<"Cari Supermarket"<<endl;
             cout<<"ID Supermarket : ";
-            cin>> infop.nama;
+            cin>> infop.Id;
             address_parent p= findElm(lp, infop);
             if(p!=NULL ){
                 cout<<p->info.Id<<endl;
@@ -109,7 +132,7 @@ int main()
         else if(pilihan==5){
             cout<<"Cari Pelanggan"<<endl;
             cout<<"ID Pelanggan : ";
-            cin>> infoc.name;
+            cin>> infoc.id;
             address_child c= findElm(lc, infoc);
             if(c!=NULL ){
                 cout<<c->info.name<<endl;
@@ -133,10 +156,15 @@ int main()
             address_parent p;
             p = findElm(lp,x);
             if (p != NULL){
+                address_parent lastadr = findLast(lp);
                 if (p == lp.first){
                     deleteFirst(lp,p);
                     cout<<"data berhasil dihapus"<<endl;
                 }
+                else if (p == lastadr){
+                    deleteLast(lp, p);
+                }
+
             }
             else {
                 cout << "data tidak ditemukan" << endl;

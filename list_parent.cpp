@@ -31,11 +31,11 @@ void insertFirst(List_parent &L, address_parent P) {
     }
     else {
         Q = first(L);
-        while(next(Q) != first(L)) {
+        while(next(Q) != NULL) {
             Q = next(Q);
         }
         next(P) = first(L);
-        next(Q) = P;
+        next(Q) = NULL;
         first(L) = P;
     }
 }
@@ -45,10 +45,7 @@ void insertLast(List_parent &L, address_parent P){
         L.first = P;
     }
     else{
-        address_parent q = L.first;
-        while(q->next != NULL){
-            q=q->next;
-        }
+        address_parent q = findLast(L);
         q->next = P;
     }
 }
@@ -56,6 +53,16 @@ void insertLast(List_parent &L, address_parent P){
 void insertAfter(address_parent Prec, address_parent P){
     P->next = Prec->next;
     Prec->next = P;
+}
+
+address_parent findLast(List_parent L){
+        if (L.first != NULL){
+            address_parent p = L.first;
+            while (p->next != NULL){
+                p = p->next;
+            }
+            return p;
+        }
 }
 
 void deleteFirst(List_parent &L, address_parent &P){
@@ -87,7 +94,7 @@ void deleteLast(List_parent &L, address_parent &P){
             }
             P = q->next;
             q->next = NULL;
-
+            delete P;
         }
     }
 }
@@ -105,15 +112,20 @@ address_parent findElm(List_parent L, infotype_parent x) {
            mengembalikan elemen dengan info = x,
            mengembalikan Nil jika tidak ditemukan
     */
-    address_parent P = first(L);
-    do {
-        if(info(P).Id == x.Id) {
-            return P;
-        }
-        P = next(P);
+    if (L.first == NULL){
+        cout << "Tidak ada supermarket" << endl;
     }
-    while(P!=first(L));
-    return NULL;
+    else {
+        address_parent P = first(L);
+        do {
+            if(info(P).Id == x.Id) {
+                return P;
+            }
+            P = next(P);
+        }
+        while(P!=NULL);
+        return NULL;
+    }
 }
 
 void printInfo(List_parent L) {

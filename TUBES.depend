@@ -27,3 +27,31 @@
 	"list_child.h"
 	"list_parent.h"
 
+1480869297 source:c:\users\hafizz\desktop\tubes asd\tubesasd\list_child.cpp
+	"list_child.h"
+
+1480861835 c:\users\hafizz\desktop\tubes asd\tubesasd\list_child.h
+	<iostream>
+
+1480874261 source:c:\users\hafizz\desktop\tubes asd\tubesasd\list_parent.cpp
+	"list_parent.h"
+
+1480872372 c:\users\hafizz\desktop\tubes asd\tubesasd\list_parent.h
+	<iostream>
+	"list_relasi.h"
+
+1480834992 c:\users\hafizz\desktop\tubes asd\tubesasd\list_relasi.h
+	"list_relasi.h"
+	"list_child.h"
+	<iostream>
+
+1480861851 source:c:\users\hafizz\desktop\tubes asd\tubesasd\list_relasi.cpp
+	"list_relasi.h"
+
+1480874555 source:c:\users\hafizz\desktop\tubes asd\tubesasd\main.cpp
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+	"list_child.h"
+	"list_parent.h"
+

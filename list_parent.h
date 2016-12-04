@@ -30,6 +30,7 @@ struct List_parent {
     address_parent first;
 };
 
+address_parent findLast(List_parent L);
 void createList(List_parent &L);
 void insertFirst(List_parent &L, address_parent P);
 void insertAfter(List_parent &L, address_parent Prec, address_parent P);
